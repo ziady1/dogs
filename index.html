@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/icon.png" />
+    <title>Dogs</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            width: 90%;
+            height: 700px;
+            border-radius: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all"></div>
+    <script>
+        var x = document.getElementsByClassName("all")[0]
+
+        console.log(x)
+
+        x.innerHTML = `<img src="">`
+
+
+
+
+        var aj = new XMLHttpRequest;
+        aj.open("GET", "https://dog.ceo/api/breeds/image/random")
+        aj.send()
+
+
+        console.log(aj.readyState);
+
+        aj.addEventListener("readystatechange", function () {
+            if (aj.readyState === 4 && aj.status == 200) {
+                x.innerHTML = `<img src="${JSON.parse(aj.response).message}">`
+            }
+        })
+
+    </script>
+</body>
+
+</html>
